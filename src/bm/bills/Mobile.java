@@ -11,9 +11,9 @@ public class Mobile extends Bill {
 	private double minutesConsumed;
 
 	// Mobile Class Constructor
-	public Mobile(int billId, Date billDate, String billType, String mobileManufacturerName, String mobilePlanName,
-			String mobileNumber, double dataConsumedGB, double minutesConsumed) {
-		super(billId, billDate, billType);
+	public Mobile(int billId, Date billDate, String billType, double billAmount, String mobileManufacturerName,
+			String mobilePlanName, String mobileNumber, double dataConsumedGB, double minutesConsumed) {
+		super(billId, billDate, billType, billAmount);
 		this.mobileManufacturerName = mobileManufacturerName;
 		this.mobilePlanName = mobilePlanName;
 		this.mobileNumber = mobileNumber;

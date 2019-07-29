@@ -8,8 +8,9 @@ public class Hydro extends Bill {
 	private double unitsConsumed;
 
 	// Hydro Class Constructor
-	public Hydro(int billId, Date billDate, String billType, String agencyName, double unitsConsumed) {
-		super(billId, billDate, billType);
+	public Hydro(int billId, Date billDate, String billType, double billAmount, String agencyName,
+			double unitsConsumed) {
+		super(billId, billDate, billType, billAmount);
 		this.agencyName = agencyName;
 		this.unitsConsumed = unitsConsumed;
 	}
@@ -18,7 +19,7 @@ public class Hydro extends Bill {
 		String billStr = "Bill Id : " + this.getBillId() + "\nBill Date : " + this.getBillDate().getTime()
 				+ "\nBill Type : " + this.getBillType() + "" + "\nBill Amount : " + this.getTotalBillAmount()
 				+ "\nAgency Name : " + this.getAgencyName() + "\nUnit Consumed : " + this.getUnitsConsumed();
-		
+
 		return billStr;
 	}
 

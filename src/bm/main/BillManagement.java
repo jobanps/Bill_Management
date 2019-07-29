@@ -12,21 +12,21 @@ public class BillManagement implements IDisplay {
 	public void addCustomers(Customer customer) {
 		this.customers.add(customer);
 	}
-	
-	public Customer getCustomerById(String custId) {
-		
+
+	public Customer getCustomerById(int custId) {
+
 		for (Customer customer : this.customers) {
-			
-			if(customer.getCustomerId().equalsIgnoreCase(custId))
+
+			if (customer.getCustomerId() == custId)
 				return customer;
 		}
-		
-		//if customer with specified Id doesnt not exist
+
+		// if customer with specified Id doesnt not exist
 		return null;
-		
+
 	}
-	
-	//Getters and Setters
+
+	// Getters and Setters
 	public ArrayList<Customer> getCustomers() {
 		return customers;
 	}
@@ -37,18 +37,16 @@ public class BillManagement implements IDisplay {
 
 	@Override
 	public void display() {
-		
+
 		for (Customer customer : customers) {
-			
+
 			// Code Here
 			String completeBillDetails = "Customer Id : " + customer.getCustomerId() + "\nCustomer Full Name : "
 					+ customer.getCustFullName() + "\nCustomer Email ID : " + customer.getCustEmailId();
 			System.out.println(completeBillDetails);
 			customer.display();
 		}
-		
+
 	}
-	
-	
-	
+
 }

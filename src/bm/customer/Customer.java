@@ -6,7 +6,7 @@ import bm.bills.Bill;
 
 public class Customer implements IDisplay {
 
-	private String customerId;
+	private int customerId;
 	private String custFirstName;
 	private String custLastName;
 	private String custFullName;
@@ -15,13 +15,13 @@ public class Customer implements IDisplay {
 	private ArrayList<Bill> billList;
 
 	// Customer Class Constructor
-	public Customer(String _customerId, String _custFirstName, String _custLastName, String _custEmailId) {
+	public Customer(int customerId, String custFirstName, String custLastName, String custEmailId) {
 
-		this.customerId = _customerId;
-		this.custFirstName = _custFirstName;
-		this.custLastName = _custLastName;
-		this.custFullName = _custFirstName + " " + _custLastName;
-		this.custEmailId = _custEmailId;
+		this.customerId = customerId;
+		this.custFirstName = custFirstName;
+		this.custLastName = custLastName;
+		this.custFullName = custFirstName + " " + custLastName;
+		this.custEmailId = custEmailId;
 		billList = new ArrayList<Bill>();
 	}
 
@@ -29,13 +29,12 @@ public class Customer implements IDisplay {
 	@Override
 	public void display() {
 
-
-		if(this.billList.size() > 0) {
+		if (this.billList.size() > 0) {
 			System.out.println("\t---- Bill Information ----");
 			for (Bill bill : billList) {
 				System.out.println("******************************************************");
-				System.out.println(bill.billDetailsToString());		
-				
+				System.out.println(bill.billDetailsToString());
+
 			}
 			System.out.println("******************************************************");
 			System.out.println("Total Bill Amount to Pay :$" + this.calcTotalAmount());
@@ -62,11 +61,11 @@ public class Customer implements IDisplay {
 	}
 
 	// Getters and Setters
-	public String getCustomerId() {
+	public int getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(String customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 
