@@ -1,5 +1,9 @@
 package bm.customer;
 
+import java.util.ArrayList;
+
+import bm.bills.Bill;
+
 public class Customer implements IDisplay {
 
 	private String customerId;
@@ -8,22 +12,56 @@ public class Customer implements IDisplay {
 	private String custFullName;
 	private String custEmailId;
 	private double totalPayableAmount;
-	
-	//Customer Class Constructor
-	public Customer() {
-		// Code Goes here
+	private ArrayList<Bill> billList;
+
+	// Customer Class Constructor
+	public Customer(String _customerId, String _custFirstName, String _custLastName, String _custEmailId) {
+
+		this.customerId = _customerId;
+		this.custFirstName = _custFirstName;
+		this.custLastName = _custLastName;
+		this.custFullName = _custFirstName + " " + _custLastName;
+		this.custEmailId = _custEmailId;
+		billList = new ArrayList<Bill>();
 	}
-	
+
 	// Method will display all types of Monthly Bills for Customer
 	@Override
 	public void display() {
-		
-		// Code Here
-		
-		
+
+
+		if(this.billList.size() > 0) {
+			System.out.println("\t---- Bill Information ----");
+			for (Bill bill : billList) {
+				System.out.println("******************************************************");
+				System.out.println(bill.billDetailsToString());		
+				
+			}
+			System.out.println("******************************************************");
+			System.out.println("Total Bill Amount to Pay :$" + this.calcTotalAmount());
+			System.out.println("******************************************************");
+		} else {
+			System.out.println("~~~NOTE : This Customer has no bills");
+		}
 	}
 
-	//Getters and Setters
+	// Adding new Bill to Customer Account
+	public void addBill(Bill bill) {
+		this.billList.add(bill);
+	}
+
+	// Calculate Total Amount
+	public double calcTotalAmount() {
+
+		double totalAmount = 0;
+		for (Bill bill : billList) {
+
+			totalAmount += bill.getTotalBillAmount();
+		}
+		return totalAmount;
+	}
+
+	// Getters and Setters
 	public String getCustomerId() {
 		return customerId;
 	}

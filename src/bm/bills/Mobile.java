@@ -1,19 +1,38 @@
 package bm.bills;
 
+import java.util.Date;
+
 public class Mobile extends Bill {
-	
+
 	private String mobileManufacturerName;
 	private String mobilePlanName;
 	private String mobileNumber;
 	private double dataConsumedGB;
 	private double minutesConsumed;
-	
-	//Mobile Class Constructor
-	public Mobile() {
-		//Code goes Here
+
+	// Mobile Class Constructor
+	public Mobile(int billId, Date billDate, String billType, String mobileManufacturerName, String mobilePlanName,
+			String mobileNumber, double dataConsumedGB, double minutesConsumed) {
+		super(billId, billDate, billType);
+		this.mobileManufacturerName = mobileManufacturerName;
+		this.mobilePlanName = mobilePlanName;
+		this.mobileNumber = mobileNumber;
+		this.dataConsumedGB = dataConsumedGB;
+		this.minutesConsumed = minutesConsumed;
 	}
 
-	//Getters and Setters
+	// return Display String
+	public String billDetailsToString() {
+		String billStr = "Bill Id : " + this.getBillId() + "\nBill Date : " + this.getBillDate().getTime()
+				+ "\nBill Type : " + this.getBillType() + "" + "\nBill Amount : " + this.getTotalBillAmount()
+				+ "\nManufacturer Name : " + this.getMobileManufacturerName() + "\nPlan Name : "
+				+ this.getMobilePlanName() + "\nMobile Number : " + this.getMobileNumber() + "\nInternet Usage : "
+				+ this.getDataConsumedGB() + "GB" + "\nMinutes Usage : " + this.getMinutesConsumed() + "minutes";
+
+		return billStr;
+	}
+
+	// Getters and Setters
 	public String getMobileManufacturerName() {
 		return mobileManufacturerName;
 	}

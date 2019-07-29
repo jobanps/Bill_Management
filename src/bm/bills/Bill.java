@@ -4,22 +4,31 @@ import java.util.Date;
 
 public class Bill {
 
-	private String billId;
+	private int billId;
 	private Date billDate;
 	private String billType;
 	private double totalBillAmount;
 
 
 	//Bill Class Constructor
-	public Bill() {
-		//Code goes here
+	public Bill(int billId, Date billDate, String billType) {
+		this.billId = billId;
+		this.billDate = billDate;
+		this.billType = billType;
 	}
+	//return Display String
+		public String billDetailsToString() {
+			
+			System.out.println("This is Bill Class");
+			
+			return "";
+		}
 	
 	// Getters and Setters
-	public String getBillId() {
+	public int getBillId() {
 		return billId;
 	}
-	public void setBillId(String billId) {
+	public void setBillId(int billId) {
 		this.billId = billId;
 	}
 	public String getBillType() {

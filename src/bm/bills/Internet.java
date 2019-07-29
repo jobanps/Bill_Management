@@ -1,13 +1,26 @@
 package bm.bills;
 
+import java.util.Date;
+
 public class Internet extends Bill {
 	
 	private String providerName;
 	private double dataUsedGB;
 	
 	//Internet Class Constructor
-	public Internet() {
-		//Code Goes Here
+	public Internet(int billId, Date billDate, String billType, String provideName, double dataUsedGB) {
+		super(billId, billDate, billType);
+		
+		this.providerName = provideName;
+		this.dataUsedGB = dataUsedGB;
+	}
+	
+	public String billDetailsToString() {
+		String billStr = "Bill Id : " + this.getBillId() + "\nBill Date : " + this.getBillDate().getTime()
+				+ "\nBill Type : " + this.getBillType() + "" + "\nBill Amount : " + this.getTotalBillAmount()
+				+ "\nProvider Name : " + this.getProviderName() + "\nInternet Usage : " + this.getDataUsedGB();
+		
+		return billStr;
 	}
 	
 	//Getters and Setters
