@@ -45,8 +45,37 @@ public class Customer implements IDisplay {
 	}
 
 	// Adding new Bill to Customer Account
-	public void addBill(Bill bill) {
-		this.billList.add(bill);
+	public void addBill(Bill bill) throws Exception {
+	
+		int key = bill.getBillId();
+		int listSize = this.billList.size();
+		
+		if (listSize > 0 && this.billList.get(listSize-1).getBillId() > key) {
+
+			for (int i = 0; i < listSize; i++) {
+
+				if (key < this.billList.get(i).getBillId()) {
+
+					
+					this.billList.add(this.billList.get(listSize - 1));
+
+					for (int j = listSize - 1; j > i; j--) 
+						this.billList.set(j, this.billList.get(j - 1)); //move all customers by 1 place to right
+
+					this.billList.set(i, bill); // add new customer to list at sorted position
+					break;
+					
+				} else if (key == this.billList.get(i).getBillId()) {
+					throw new Exception("Bill with same id already exist.");
+				}
+			}
+
+		} else {
+			
+			this.billList.add(bill);
+			System.out.println("New Bill Added");
+		}
+	    
 	}
 
 	// Calculate Total Amount
