@@ -12,22 +12,38 @@ public class Mobile extends Bill {
 
 	// Mobile Class Constructor
 	public Mobile(int billId, Date billDate, String billType, double billAmount, String mobileManufacturerName,
-			String mobilePlanName, String mobileNumber, double dataConsumedGB, double minutesConsumed) {
+			String mobilePlanName, String mobileNumber, double dataConsumedGB, double minutesConsumed)
+			throws Exception {
 		super(billId, billDate, billType, billAmount);
 		this.mobileManufacturerName = mobileManufacturerName;
 		this.mobilePlanName = mobilePlanName;
-		this.mobileNumber = mobileNumber;
+		if (isValidMobileNumber(mobileNumber)) {
+			this.mobileNumber = mobileNumber;
+		} else {
+			throw new Exception("Invalid Mobile Number");
+		}
 		this.dataConsumedGB = dataConsumedGB;
 		this.minutesConsumed = minutesConsumed;
 	}
 
+	// Function to verify if mobile number is valid
+	public boolean isValidMobileNumber(String mobileNumber) {
+
+		if (mobileNumber.length() == 10) {
+
+			return true;
+		}
+
+		return false;
+	}
+
 	// return Display String
 	public String billDetailsToString() {
-		String billStr = "Bill Id : " + this.getBillId() + "\nBill Date : " + this.getBillDate()
-				+ "\nBill Type : " + this.getBillType() + "" + "\nBill Amount : " + this.getTotalBillAmount()
-				+ "\nManufacturer Name : " + this.getMobileManufacturerName() + "\nPlan Name : "
-				+ this.getMobilePlanName() + "\nMobile Number : " + this.getMobileNumber() + "\nInternet Usage : "
-				+ this.getDataConsumedGB() + "GB" + "\nMinutes Usage : " + this.getMinutesConsumed() + "minutes";
+		String billStr = "Bill Id : " + this.getBillId() + "\nBill Date : " + this.getBillDate() + "\nBill Type : "
+				+ this.getBillType() + "" + "\nBill Amount : " + this.getTotalBillAmount() + "\nManufacturer Name : "
+				+ this.getMobileManufacturerName() + "\nPlan Name : " + this.getMobilePlanName() + "\nMobile Number : "
+				+ this.getMobileNumber() + "\nInternet Usage : " + this.getDataConsumedGB() + "GB"
+				+ "\nMinutes Usage : " + this.getMinutesConsumed() + "minutes";
 
 		return billStr;
 	}

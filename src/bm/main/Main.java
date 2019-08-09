@@ -25,8 +25,8 @@ public class Main {
 			//Customer with 4 Bills
 			Customer customer2 = new Customer(121, "Preet", "Singh", "jobanps@gmail.com");
 			customer2.addBill(
-					new Mobile(11, new Date(), "Mobile", 250.12, "Samsung", "65 Freedom", "918123812313", 5.6, 125));
-			customer2.addBill(new Hydro(121, new Date(1564714613627L), "Hydro", 123.45, "Apna Pump", 110));
+					new Mobile(11, new Date(1564714613627L), "Mobile", 250.12, "Samsung", "65 Freedom", "9181238121", 5.6, 125));
+			customer2.addBill(new Mobile(121, new Date(1564714613627L), "Mobile", 123.45, "Samsung", "Freedom 60", "6478371283", 110, 20));
 			customer2.addBill(new Hydro(14, new Date(1564764623627L), "Hydro", 132.45, "Jal Pump", 120));
 			customer2.addBill(new Internet(13, new Date(1564764113627L), "Internet", 241.2, "Roger", 500));
 
@@ -57,6 +57,16 @@ public class Main {
 
 				System.out.println("Error Occured : " + exception.getLocalizedMessage());
 			}
+			
+			try {
+				// adding invalid Customer Email Id
+				Customer cust = new Customer(101, "Gurpreet", "Singh", "gurupgmail.com");
+				cust.display();
+
+			} catch (Exception exception) {
+
+				System.out.println("Error Occured : " + exception.getLocalizedMessage());
+			}
 
 			try {
 				// Adding new customer that already exist.
@@ -70,6 +80,15 @@ public class Main {
 			try {
 				// Adding new bill that customer already have.
 				customer1.addBill(new Internet(1, new Date(1564764613627L), "Internet", 56.60, "Roger", 500));
+
+			} catch (Exception exception) {
+
+				System.out.println("Error Occured : " + exception.getLocalizedMessage());
+			}
+			
+			try {
+				// Adding new bill with invalid mobile number.
+				customer1.addBill(new Mobile(121, new Date(1564714613627L), "Mobile", 123.45, "Samsung", "Freedom 60", "6478121271283", 110, 20));
 
 			} catch (Exception exception) {
 
