@@ -28,6 +28,11 @@ public class Customer implements IDisplay {
 	// Method will display all types of Monthly Bills for Customer
 	@Override
 	public void display() {
+		
+		String completeBillDetails = "\n\nCustomer Id : " + this.getCustomerId() + "\nCustomer Full Name : "
+				+ this.getCustFullName() + "\nCustomer Email ID : " + this.getCustEmailId();
+		System.out.println(completeBillDetails);
+		
 
 		if (this.billList.size() > 0) {
 			System.out.println("\t---- Bill Information ----");
@@ -47,14 +52,19 @@ public class Customer implements IDisplay {
 	// Adding new Bill to Customer Account
 	public void addBill(Bill bill) throws Exception {
 	
-		int key = bill.getBillId();
+		int keyId = bill.getBillId();
+		double keyAmount = bill.getTotalBillAmount();
 		int listSize = this.billList.size();
 		
-		if (listSize > 0 && this.billList.get(listSize-1).getBillId() > key) {
+		if (listSize > 0 && this.billList.get(listSize-1).getTotalBillAmount() >= keyAmount) {
 
 			for (int i = 0; i < listSize; i++) {
 
-				if (key < this.billList.get(i).getBillId()) {
+				 if (keyId == this.billList.get(i).getBillId()) {
+						throw new Exception("Bill with same id already exist.");
+					}
+				
+				if (keyAmount <= this.billList.get(i).getTotalBillAmount()) {
 
 					
 					this.billList.add(this.billList.get(listSize - 1));
@@ -65,15 +75,14 @@ public class Customer implements IDisplay {
 					this.billList.set(i, bill); // add new customer to list at sorted position
 					break;
 					
-				} else if (key == this.billList.get(i).getBillId()) {
-					throw new Exception("Bill with same id already exist.");
-				}
+				} 
+				
 			}
 
 		} else {
 			
 			this.billList.add(bill);
-			System.out.println("New Bill Added");
+			//System.out.println("New Bill Added");
 		}
 	    
 	}

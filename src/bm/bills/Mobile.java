@@ -23,7 +23,7 @@ public class Mobile extends Bill {
 
 	// return Display String
 	public String billDetailsToString() {
-		String billStr = "Bill Id : " + this.getBillId() + "\nBill Date : " + this.getBillDate().getTime()
+		String billStr = "Bill Id : " + this.getBillId() + "\nBill Date : " + this.getBillDate()
 				+ "\nBill Type : " + this.getBillType() + "" + "\nBill Amount : " + this.getTotalBillAmount()
 				+ "\nManufacturer Name : " + this.getMobileManufacturerName() + "\nPlan Name : "
 				+ this.getMobilePlanName() + "\nMobile Number : " + this.getMobileNumber() + "\nInternet Usage : "

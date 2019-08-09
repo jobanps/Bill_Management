@@ -16,7 +16,7 @@ public class Hydro extends Bill {
 	}
 
 	public String billDetailsToString() {
-		String billStr = "Bill Id : " + this.getBillId() + "\nBill Date : " + this.getBillDate().getTime()
+		String billStr = "Bill Id : " + this.getBillId() + "\nBill Date : " + this.getBillDate()
 				+ "\nBill Type : " + this.getBillType() + "" + "\nBill Amount : " + this.getTotalBillAmount()
 				+ "\nAgency Name : " + this.getAgencyName() + "\nUnit Consumed : " + this.getUnitsConsumed();
 
